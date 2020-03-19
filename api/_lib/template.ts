@@ -102,7 +102,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
         <div>
             <div class="heading">
-                <p>Volunteer as part of the</p>
+                <p>Volunteer to take calls in the</p>
                 <p><strong>${emojify(sanitizeHtml(text))}</strong></p>
                 <p>community</p>
             </div>
