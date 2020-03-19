@@ -2,6 +2,10 @@
   "name": "og-image",
   "version": "1.0.0",
   "description": "Generate an open graph image for twitter/facebook/etc",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jayhoogle/og-image.git"
+  },
   "engines": {
     "node": "10.x"
   },
