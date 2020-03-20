@@ -1,4 +1,4 @@
-import { ParsedRequest, FileType } from "../api/_lib/types";
+import { ParsedRequest } from "../api/_lib/types";
 const { H, R, copee } = window as any;
 let timeout = -1;
 
@@ -34,29 +34,29 @@ interface DropdownOption {
   value: string;
 }
 
-interface DropdownProps {
-  options: DropdownOption[];
-  value: string;
-  onchange: (val: string) => void;
-  small: boolean;
-}
+// interface DropdownProps {
+//   options: DropdownOption[];
+//   value: string;
+//   onchange: (val: string) => void;
+//   small: boolean;
+// }
 
-const Dropdown = ({ options, value, onchange, small }: DropdownProps) => {
-  const wrapper = small ? "select-wrapper small" : "select-wrapper";
-  const arrow = small ? "select-arrow small" : "select-arrow";
-  return H(
-    "div",
-    { className: wrapper },
-    H(
-      "select",
-      { onchange: (e: any) => onchange(e.target.value) },
-      options.map(o =>
-        H("option", { value: o.value, selected: value === o.value }, o.text)
-      )
-    ),
-    H("div", { className: arrow }, "▼")
-  );
-};
+// const Dropdown = ({ options, value, onchange, small }: DropdownProps) => {
+//   const wrapper = small ? "select-wrapper small" : "select-wrapper";
+//   const arrow = small ? "select-arrow small" : "select-arrow";
+//   return H(
+//     "div",
+//     { className: wrapper },
+//     H(
+//       "select",
+//       { onchange: (e: any) => onchange(e.target.value) },
+//       options.map(o =>
+//         H("option", { value: o.value, selected: value === o.value }, o.text)
+//       )
+//     ),
+//     H("div", { className: arrow }, "▼")
+//   );
+// };
 
 interface TextInputProps {
   value: string;
@@ -118,10 +118,10 @@ const Toast = ({ show, message }: ToastProps) => {
   );
 };
 
-const fileTypeOptions: DropdownOption[] = [
-  { text: "PNG", value: "png" },
-  { text: "JPEG", value: "jpeg" }
-];
+// const fileTypeOptions: DropdownOption[] = [
+//   { text: "PNG", value: "png" },
+//   { text: "JPEG", value: "jpeg" }
+// ];
 
 const imageLightOptions: DropdownOption[] = [
   {
@@ -166,11 +166,11 @@ const App = (_: any, state: AppState, setState: SetState) => {
     setState({ ...newState, loading: true });
   };
   const {
-    fileType = "png",
+    // fileType = "png",
     fontSize = "100px",
     theme = "light",
     md = true,
-    text = "**Hello** World",
+    text = "Hello World",
     images = [imageLightOptions[0].value],
     widths = [],
     heights = [],
@@ -181,7 +181,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
   } = state;
   const mdValue = md ? "1" : "0";
   const url = new URL(window.location.origin);
-  url.pathname = `${encodeURIComponent(text)}.${fileType}`;
+  url.pathname = `${encodeURIComponent(text)}.jpeg`;
   url.searchParams.append("theme", theme);
   url.searchParams.append("md", mdValue);
   url.searchParams.append("fontSize", fontSize);
@@ -203,14 +203,14 @@ const App = (_: any, state: AppState, setState: SetState) => {
       { className: "pull-left" },
       H(
         "div",
-        H(Field, {
-          label: "File Type",
-          input: H(Dropdown, {
-            options: fileTypeOptions,
-            value: fileType,
-            onchange: (val: FileType) => setLoadingState({ fileType: val })
-          })
-        }),
+        // H(Field, {
+        //   label: "File Type",
+        //   input: H(Dropdown, {
+        //     options: fileTypeOptions,
+        //     value: fileType,
+        //     onchange: (val: FileType) => setLoadingState({ fileType: val })
+        //   })
+        // }),
         H(Field, {
           label: "Text Input",
           input: H(TextInput, {
